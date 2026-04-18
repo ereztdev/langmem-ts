@@ -51,6 +51,7 @@ export interface Extractor {
 export interface OpenAIEmbedderConfig {
   apiKey: string;
   model?: string;
+  dimensions?: number;
 }
 
 export interface PgVectorStoreConfig {
