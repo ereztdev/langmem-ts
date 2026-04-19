@@ -63,7 +63,8 @@ export interface PgVectorStoreConfig {
 }
 
 export interface PgVectorRetrieverConfig {
-  connectionString: string;
+  connectionString?: string;
+  pool?: Pool;
   tableName?: string;
 }
 
