@@ -68,7 +68,14 @@ export interface PgVectorRetrieverConfig {
   tableName?: string;
 }
 
+export interface ExtractorExample {
+  input: ConversationTurn;
+  output: string[];
+}
+
 export interface LLMExtractorConfig {
   apiKey: string;
   model?: string;
+  systemPrompt?: string;
+  examples?: ExtractorExample[];
 }
