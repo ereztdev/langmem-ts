@@ -1,3 +1,5 @@
+import type { Pool } from "pg";
+
 export interface Memory {
   id: string;
   content: string;
@@ -55,7 +57,8 @@ export interface OpenAIEmbedderConfig {
 }
 
 export interface PgVectorStoreConfig {
-  connectionString: string;
+  connectionString?: string;
+  pool?: Pool;
   tableName?: string;
 }
 
