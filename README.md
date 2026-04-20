@@ -137,6 +137,7 @@ The `1536` dimension matches the default embedder (OpenAI `text-embedding-3-larg
 
 ```bash
 docker compose up -d
+# wait ~5 seconds for Postgres to accept connections
 export OPENAI_API_KEY=sk-...
 export DATABASE_URL=postgres://langmem:langmem@localhost:5432/langmem
 npx tsx examples/basic.ts

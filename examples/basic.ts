@@ -25,6 +25,44 @@ if (!OPENAI_API_KEY || !DATABASE_URL) {
   );
 }
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+async function waitForPostgres(connectionString: string): Promise<void> {
+  const maxAttempts = 15;
+  const delayMs = 2000;
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const pool = new Pool({ connectionString });
+    try {
+      await pool.query("SELECT 1");
+      await pool.end();
+      return;
+    } catch (err) {
+      lastError = err;
+      try {
+        await pool.end();
+      } catch {
+        // ignore shutdown errors during probe
+      }
+      if (attempt === maxAttempts) {
+        const detail =
+          lastError instanceof Error ? lastError.message : String(lastError);
+        throw new Error(
+          "Postgres did not accept connections within ~30s after 15 attempts (2s between each). " +
+            "Is the database up? Start it with `docker compose up -d` and check logs with `docker compose logs`. " +
+            `Last error: ${detail}`,
+        );
+      }
+      await sleep(delayMs);
+    }
+  }
+}
+
 const DEMO_TURNS = [
   {
     role: "user" as const,
@@ -41,6 +79,8 @@ const DEMO_TURNS = [
 ];
 
 async function main(): Promise<void> {
+  await waitForPostgres(DATABASE_URL);
+
   const ddl = new Pool({ connectionString: DATABASE_URL });
   await ddl.query("DROP INDEX IF EXISTS memories_embedding_idx");
   await ddl.end();
