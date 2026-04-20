@@ -1,5 +1,7 @@
 <div align="center">
 
+![langmem-ts splash banner](assets/splash.png)
+
 # langmem-ts
 
 **TypeScript first class memory primitive for AI agents.**
