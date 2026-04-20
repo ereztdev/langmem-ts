@@ -1,0 +1,65 @@
+name: Bug report
+description: Something doesn't work the way it should
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. Please fill in as much as you can — the more reproducible, the faster the fix.
+
+  - type: input
+    id: version
+    attributes:
+      label: langmem-ts version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      placeholder: "20.11.0"
+    validations:
+      required: true
+
+  - type: input
+    id: postgres
+    attributes:
+      label: Postgres + pgvector version
+      placeholder: "pg16 / pgvector 0.7.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: A short description of the behavior you expected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened
+      description: Error messages, stack traces, unexpected output. Paste full stack traces in a code block.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: |
+        The smallest snippet that reproduces the issue. Strip out anything not related to the bug.
+        If the bug is environmental (docker, pgvector install, etc.), describe the setup steps.
+      render: typescript
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Related issues, workarounds you've tried, hypotheses about the cause.

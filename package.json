@@ -11,7 +11,18 @@
        "type": "git",
        "url": "https://github.com/ereztdev/langmem-ts.git"
   },
-  "keywords": ["memory", "ai", "agents", "llm", "embeddings", "pgvector", "openai", "typescript"],
+  "keywords": [
+    "memory",
+    "ai",
+    "agent",
+    "llm",
+    "rag",
+    "pgvector",
+    "embeddings",
+    "langchain-alternative",
+    "typescript",
+    "postgres"
+  ],
   "exports": {
     ".": {
       "import": {
