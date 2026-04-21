@@ -12,6 +12,7 @@
 [![npm version](https://img.shields.io/npm/v/langmem-ts)](https://www.npmjs.com/package/langmem-ts)
 [![npm downloads](https://img.shields.io/npm/dm/langmem-ts)](https://www.npmjs.com/package/langmem-ts)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/langmem-ts)](https://bundlephobia.com/package/langmem-ts)
+[![CI](https://github.com/ereztdev/langmem-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/ereztdev/langmem-ts/actions/workflows/ci.yml)
 
 `extract → embed → store → retrieve` over any Postgres + pgvector backend.
 
